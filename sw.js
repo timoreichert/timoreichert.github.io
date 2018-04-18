@@ -98,7 +98,7 @@ workbox.routing.registerRoute(
 
 // Github api
 workbox.routing.registerRoute(
-  new RegExp('https://api.github.com/users/timoreichert/gists/(.*)'),
+  new RegExp('https://api.github.com/(.*)'),
   workbox.strategies.networkFirst({
     cacheName: 'githubapis',
     plugins: [
