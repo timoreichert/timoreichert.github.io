@@ -96,6 +96,20 @@ workbox.routing.registerRoute(
   })
 )
 
+// Github api
+workbox.routing.registerRoute(
+  new RegExp('https://api.github.com/users/timoreichert/gists/(.*)'),
+  workbox.strategies.networkFirst({
+    cacheName: 'githubapis',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 30
+      })
+    ]
+  })
+)
+
+/*
 // API with network-first strategy
 workbox.routing.registerRoute(
   /(http[s]?:\/\/)?([^\/\s]+\/)gists/,
@@ -107,7 +121,7 @@ workbox.routing.registerRoute(
   /(http[s]?:\/\/)?([^\/\s]+\/)favorites/,
   workbox.strategies.cacheFirst()
 )
-
+*/
 // PUSH NOTIFICATIONS
 
 // Receive push and show a notification
