@@ -57,11 +57,11 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "index.html",
-    "revision": "fd6291b45a6ab52115f4dc3ab9dbe49d"
+    "revision": "b5231c63146745c78f447a69ee85feed"
   },
   {
-    "url": "main.c3fa9bf7e4dedb570574.js",
-    "revision": "f8bc47099e342d12cbac8e90720cbdfb"
+    "url": "main.8a61ffec6c749b3e6cfd.js",
+    "revision": "1aef8c9311295c7cae0b075758d9f9bf"
   },
   {
     "url": "polyfills.2d976f42c1abc2acac30.js",
@@ -76,8 +76,8 @@ workbox.precaching.precacheAndRoute([
     "revision": "ce6249f88e8f203ce8653ef732c1c8a8"
   },
   {
-    "url": "styles.fb664e3694027889fd2b.css",
-    "revision": "86f514d12e0c8e597ad637a60a2b47a3"
+    "url": "styles.59cea40677fc41a74d86.css",
+    "revision": "c271380305f8eb92fe6e80ebd16795d2"
   }
 ])
 
@@ -98,7 +98,7 @@ workbox.routing.registerRoute(
 
 // API with network-first strategy
 workbox.routing.registerRoute(
-  /(http[s]?:\/\/)?([^\/\s]+\/)timeline/,
+  /(http[s]?:\/\/)?([^\/\s]+\/)gists/,
   workbox.strategies.networkFirst()
 )
 
