@@ -57,11 +57,11 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "index.html",
-    "revision": "b5231c63146745c78f447a69ee85feed"
+    "revision": "6956667d1358e2889a16964e908aaf6a"
   },
   {
-    "url": "main.8a61ffec6c749b3e6cfd.js",
-    "revision": "1aef8c9311295c7cae0b075758d9f9bf"
+    "url": "main.b3d0a90b076057cabbba.js",
+    "revision": "dc7314d6dc5c097f653070d2dacc504a"
   },
   {
     "url": "polyfills.2d976f42c1abc2acac30.js",
@@ -129,8 +129,8 @@ self.addEventListener('push', function (event) {
   console.log('[Service Worker]: Received push event', event)
 
   var notificationData = {}
-
-  if (event.data.json()) {
+  console.log(event.data);
+  if (isJson(event.data)) {
     notificationData = event.data.json().notification // "notification node is specific for @angular/service-worker
   } else {
     notificationData = {
@@ -181,7 +181,7 @@ self.addEventListener('notificationclick', function (event) {
 })
 
 // BACKGROUND SYNC
-
+/*
 // Registering a route for retries
 workbox.routing.registerRoute(
   /(http[s]?:\/\/)?([^\/\s]+\/)post-tweet/,
@@ -194,11 +194,30 @@ workbox.routing.registerRoute(
   }),
   'POST'
 )
+*/
 
 // GOOGLE ANALYTICS
-
 workbox.googleAnalytics.initialize({
   parameterOverrides: {
     dimension1: 'offline'
   }
 })
+
+
+function isJson(item) {
+  item = typeof item !== "string"
+      ? JSON.stringify(item)
+      : item;
+
+  try {
+      item = JSON.parse(item);
+  } catch (e) {
+      return false;
+  }
+
+  if (typeof item === "object" && item !== null) {
+      return true;
+  }
+
+  return false;
+}
